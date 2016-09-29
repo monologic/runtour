@@ -30,3 +30,13 @@ Route::post('addempresa', 'EmpresaController@store');
 Route::get('allmarker/{pais}/{ciudad}', 'EmpresaController@negocios');
 Route::get('negocios/{pais}/{ciudad}', 'EmpresaController@negocios');
 Route::get('paices', 'paisController@allpaices');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix'=> 'admin', 'middleware' => [ 'auth', 'web' ]], function(){
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+});	
