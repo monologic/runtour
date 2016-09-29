@@ -3,6 +3,7 @@
 @section('title', 'TourMaps')
 
 @section('content')
+        <div ng-controller="negociosController">
             <section id="header" class="dark" style="top:-75px;z-index:-10">
                 <header>
                     <h1>Bienvido <br> RunaTour</h1>
@@ -16,13 +17,16 @@
                     
             </section>
              <div class="frm-info">
+                <form role="form" method="POST" action="{{ url('/addDataSession') }}">
+                    {{ csrf_field() }}
                     <label for="">Pais</label>
                     <input type="text" name="pais" class="pa inp">
                     <label for="">Region</label>
                     <input type="text" name="region" class="inp">
-                    <button>Guardar</button>
-                </div>
-        <!-- First -->
+                    <input type="submit" class="btn btn-app oo" value="Guardar">
+                </form>
+            </div>
+            <!-- First -->
             <section id="first" class="main">
                 <header>
                     <div class="container">
@@ -81,7 +85,7 @@
                 </div>
             </section>
 
-        <!-- Second -->
+            <!-- Second -->
             <section id="second" class="main">
                 <header>
                     <div class="container">
@@ -131,4 +135,5 @@
                     <li><a href="#" class="icon fa-youtube"><span class="label">Dribbble</span></a></li>
                 </ul>
             </section>
+        </div>
 @endsection

@@ -30,6 +30,8 @@ Route::post('addempresa', 'EmpresaController@store');
 Route::get('allmarker/{pais}/{ciudad}', 'EmpresaController@negocios');
 Route::get('negocios/{pais}/{ciudad}', 'EmpresaController@negocios');
 Route::get('paices', 'paisController@allpaices');
+Route::post('addDataSession', 'EmpresaController@addDataSession');
+Route::get('getDataSession', 'EmpresaController@getDataSession');
 
 Route::auth();
 
@@ -39,4 +41,6 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'auth', 'web' ]], function()
 	Route::get('/', function () {
 	    return view('welcome');
 	});
-});	
+});
+
+

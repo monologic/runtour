@@ -102,4 +102,15 @@ class EmpresaController extends Controller
         ])->get();
         return response()->json( $not );
     }
+
+    public function addDataSession(Request $request)
+    {
+        session(['pais' => $request->pais]); //usando el helper
+        session(['region' => $request->region]); //usando el helper
+    }
+    public function getDataSession()
+    {
+        $data = \Session::all(); //usando el Facade
+        return response()->json( $data );
+    }
 }
