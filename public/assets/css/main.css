@@ -588,12 +588,12 @@
 
 	#header {
 		position: relative;
-		margin: 0;
+		margin:-20px 0;
 		background-image: url("images/overlay.png"), url("../../images/header.jpg");
 		background-size: auto, cover;
 		background-position: top left, center center;
 		background-repeat: repeat, no-repeat;
-		padding: 23.3em 0 23.3em 1em;
+		padding: 23.3em 0 23.3em 20em;
 		text-align: center;
 		color: #fff;
 	}
@@ -730,6 +730,7 @@
 		/* Header */
 
 			#header {
+				margin: -20px 0px;
 				padding: 12em 0 12em 0;
 			}
 
@@ -783,8 +784,8 @@
 		/* Header */
 
 			#header {
-				margin: 0 !important;
-				padding: 8em 2em 8em 2em;
+				margin: -20px 0px;
+				padding: 15em 0em;
 			}
 
 				#header header p {
@@ -888,6 +889,7 @@
 		/* Header */
 
 			#header {
+				margin: -20px 0px;
 				padding: 6em 20px 6em 20px;
 			}
 

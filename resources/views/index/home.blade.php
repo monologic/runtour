@@ -4,11 +4,12 @@
 
 @section('content')
         <div ng-controller="negociosController">
-            <section id="header" class="dark" style="top:-75px;z-index:-10">
+            <section id="header">
                     
             </section>
              <div class="frm-info">
-                <form role="form" method="POST" action="{{ url('/addDataSession') }}">
+                <h2 class="text-center text-bv"><i class="fa fa-slack" aria-hidden="true"></i> <br> RunaTour</h2>
+                <form class="frm-session" role="form" method="POST" action="{{ url('/addDataSession') }}">
                     {{ csrf_field() }}
                     <label for="">Pais</label>
                     <select name="pais" id="" class="pa inp my-select">
@@ -19,7 +20,7 @@
                     </select>
                     <label for="">Region</label>
                     <input type="text" name="region" class="inp">
-                    <input type="submit" class="btn btn-app" value="Comenzar">
+                    <input type="submit" class="btn btn-comenzar" value="Comenzar">
                 </form>
             </div>
             <!-- First -->

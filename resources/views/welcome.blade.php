@@ -26,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/" style="color:white">TourMaps</a>
+              <a class="navbar-brand conf" href="/"><img src="logos/logo.png" alt="" class="logo-prin"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
