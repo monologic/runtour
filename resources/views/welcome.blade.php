@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/css/kira.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/css/check.css')}}" />
+        <link rel="stylesheet" href="{{asset('assets/select-img/Flat.css')}}" />
+        <link rel="stylesheet" href="{{asset('assets/select-img/ImageSelect.css')}}" />
     </head>
     <body ng-app="App">
         <!-- Header -->
@@ -46,6 +48,7 @@
         <!-- Scripts -->
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/jquery.scrolly.min.js')}}"></script>
+        <script src="{{asset('assets/select-img/ImageSelect.jquery.js')}}"></script>
         <script src="{{asset('assets/angular/angular.min.js')}}"></script>
         <script src="{{asset('assets/angular/main.js')}}"></script>
         <script src="{{asset('assets/angular/negociosController.js')}}"></script>
@@ -64,7 +67,7 @@
                 datos=data;
                 ht="<div class='cont-band'><img class='band' src='assets/flags/"+data.address.country_code+".png'><strong>"+data.address.country_code+"</strong></div><div id='datos'>"+data.latitude+" "+data.longitude+" "+ data.zoom+"<div>";
                 $('.pais-id').html(ht);
-                $('.pa').val(data.address.country);
+                $('.pa').val(data.address.country_code);
             });
             </script>
     </body>

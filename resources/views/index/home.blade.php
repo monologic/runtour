@@ -5,25 +5,21 @@
 @section('content')
         <div ng-controller="negociosController">
             <section id="header" class="dark" style="top:-75px;z-index:-10">
-                <header>
-                    <h1>Bienvido <br> RunaTour</h1>
-                    
-                </header>
-                <footer>
-                    <a href="#first" class="button scrolly">Descubrir</a>
-
-                </footer>
-               
                     
             </section>
              <div class="frm-info">
                 <form role="form" method="POST" action="{{ url('/addDataSession') }}">
                     {{ csrf_field() }}
                     <label for="">Pais</label>
-                    <input type="text" name="pais" class="pa inp">
+                    <select name="pais" id="" class="pa inp my-select">
+                        <option value="PE"  data-img-src="images/mrk-1.png">Peru</option>
+                        <option value="ARG" data-img-src="images/mrk-1.png">Argentina</option>
+                        <option value="MX" data-img-src="images/mrk-1.png">Mexico</option>
+                        <option value="BO" data-img-src="images/mrk-1.png">Bolibia</option>
+                    </select>
                     <label for="">Region</label>
                     <input type="text" name="region" class="inp">
-                    <input type="submit" class="btn btn-app oo" value="Guardar">
+                    <input type="submit" class="btn btn-app" value="Comenzar">
                 </form>
             </div>
             <!-- First -->

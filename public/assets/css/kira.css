@@ -4,14 +4,16 @@
 .frm-info{
   display:block;
   position: absolute;
-  height: 150px;
-  margin:-250px 30px;
-  width: 100px;
+  height: 100%;
+  background-color: rgba(200,200,200,.7);
+  top:53px;
+  width: 180px;
 }
 .frm-info label{
   color: white;
   font-weight: 100;
   line-height: 1.5em;
+  margin-bottom: 5px;
   font-family: 'Poppins', sans-serif;
 }
 .frm-info .inp{
@@ -22,6 +24,7 @@
   padding-left: 10px;
   font-weight: normal;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 /*Negocios*/
 #list-cate{
@@ -224,6 +227,9 @@
   border-color: #0277BD;
   height: 34px;
   padding-top: 7px;
+}
+.btn-app{
+  padding: 8px 15px;
 }
 .oo{
   display: block;
