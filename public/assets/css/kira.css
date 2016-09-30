@@ -7,7 +7,6 @@
 }
 .conf{
   text-decoration: none;
-
 }
 .frm-info{
   display:block;
@@ -16,13 +15,14 @@
   padding-top: 6%;
   background-color: rgba(249, 105, 14,.7);
   top:53px;
-  width: 35%;
+  width: 30%;
+  min-width: 200px;
 }
 .text-bv{
   color: white;
   font-weight: bold;
   font-size: 2em;
-  font-size: font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: normal;
 }
 .frm-info label{
@@ -76,6 +76,17 @@
 .ctn{
   width: 90%;
   margin: 20px auto 20px auto;
+}
+.c-f{
+  display: none;
+}
+.active-r{
+  display: block
+}
+.tit-h3{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-size: 2em;
 }
 .catg{
   margin-bottom: 10px;

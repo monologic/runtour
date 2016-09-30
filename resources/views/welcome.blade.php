@@ -42,7 +42,6 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-        @yield('content')
         <!-- Footer -->
 
         <!-- Scripts -->
@@ -51,7 +50,8 @@
         <script src="{{asset('assets/select-img/ImageSelect.jquery.js')}}"></script>
         <script src="{{asset('assets/angular/angular.min.js')}}"></script>
         <script src="{{asset('assets/angular/main.js')}}"></script>
-        <script src="{{asset('assets/angular/negociosController.js')}}"></script>
+        <script src="{{asset('assets/angular/controllers/negociosController.js')}}"></script>
+        <script src="{{asset('assets/angular/controllers/paisController.js')}}"></script>
         <script src="{{asset('assets/angular/directives/pagination/dirPagination.js')}}"></script>
         <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/skel.min.js')}}"></script>
@@ -60,7 +60,7 @@
         <script src="{{asset('assets/bootstrap/js/bootstrap.js')}}"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="{{asset('assets/files/js/fileinput.js')}}"></script>
-        
+        @yield('content')
     
          <script>
             $.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {

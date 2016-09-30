@@ -198,7 +198,7 @@
 	}
 
 	body {
-		background: #F8F8F8;
+		background: white;
 		font-family: 'Roboto', sans-serif;
 		font-weight: 300;
 		font-size: 17pt;
@@ -588,7 +588,7 @@
 
 	#header {
 		position: relative;
-		margin:-20px 0;
+		margin:-20px 0 !important;
 		background-image: url("images/overlay.png"), url("../../images/header.jpg");
 		background-size: auto, cover;
 		background-position: top left, center center;
@@ -596,6 +596,7 @@
 		padding: 23.3em 0 23.3em 20em;
 		text-align: center;
 		color: #fff;
+		min-height: 500px;
 	}
 
 		#header header h1 {
