@@ -39,8 +39,16 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix'=> 'admin', 'middleware' => [ 'auth', 'web' ]], function(){
 	Route::get('/', function () {
-	    return view('welcome');
+	    return view('auth.panel');
 	});
+	Route::get('/pago', function () {
+	    return view('gestor.pagos');
+	});
+	Route::get('/ranking', function () {
+	    return view('gestor.ranking');
+	});
+
+	Route::get('/getEmpresa', 'EmpresaController@getall');
 });
 
 

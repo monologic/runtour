@@ -1,7 +1,18 @@
 app.controller('paicesController', function($scope,$http) {
+    $scope.dtubicacion = function (){
+         $http.get('getDataSession').then(function successCallback(response) {
+                data = response.data;
+                $scope.dataSess = data;
+                $('#selpais').val($scope.dataSess['pais']);
+                $('#selregion').val($scope.dataSess['region']);
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
     $scope.get = function () {
         $http.get('paices').then(function successCallback(response) {
-        		$('#footer').remove();
                 $scope.paices = response.data;
                 $scope.openMaps();
                 //$scope.rs0=true;$scope.rs1=true;$scope.rs2=true;
@@ -20,6 +31,7 @@ app.controller('paicesController', function($scope,$http) {
       var desti;
       $scope.openMaps = function (datos){
       	var image = 'images/yo.png';
+        geocoder = new google.maps.Geocoder();
       	$scope.map = new google.maps.Map(document.getElementById('map'), {
   		    center: {lat: -34.397, lng: 150.644},
   		    zoom: 16,
@@ -43,10 +55,12 @@ app.controller('paicesController', function($scope,$http) {
   		      $scope.map.setCenter(pos);
   		      $scope.geo(pos);
   		    }, function() {
-  		      handleLocationError(true, infoWindow, map.getCenter());
+            $scope.manual();
+  		      //handleLocationError(true, infoWindow, map.getCenter());
   		    });
   		  } else {
   		    // Browser doesn't support Geolocation
+          alert('no se localizo');
   		    handleLocationError(false, infoWindow, map.getCenter());
   		  }
       }
@@ -56,13 +70,37 @@ app.controller('paicesController', function($scope,$http) {
   		    $scope.map.setZoom(oldZoom + 1);
   		     
   	}
-  	 $scope.menos = function (){
+    $scope.manual = function(){
+      //alert('alert');
+      var ps;
+      $http.get('getDataSession').then(function successCallback(response) {
+                $scope.dt = response.data;
+                pais = $scope.dt.pais;
+                region = $scope.dt.region;
+                $scope.ubic(pais,region)
+            }, function errorCallback(response) {
+            
+            });
+    }
+    $scope.ubic = function (pais,region){
+        var address = pais +" "+region;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+           $scope.map.setCenter(results[0].geometry.location);
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+        $scope.markers(pais,region);
+    }
+  	$scope.menos = function (){
   		  // Setup the click event listener - zoomIn
   		  	var oldZoom =  $scope.map.getZoom();
   		    $scope.map.setZoom(oldZoom - 1);
   		     
   	}
    	 $scope.markers = function (pais,region) {
+        console.log('allmarker/'+ pais + '/' + region);
           $http.get('allmarker/'+ pais + '/' + region).then(function successCallback(response) {
                   $scope.markers = response.data;
                   $scope.addMaker(0)
@@ -71,24 +109,39 @@ app.controller('paicesController', function($scope,$http) {
               // or server returns response with an error status.
               });
       }
+      $scope.hospedajes = true;
+      $scope.hoteles = true;
+      $scope.polleria = true;
+
       $scope.addMaker = function (){
       	$scope.clear();
       	im='';
-      	for (var s = 0; s <= 7; s++) {
-      		ve = 'rs'+s;
-      		opcion=document.getElementById("op"+s).checked;
-      		if (opcion) {
-  	    		for (var i = 0; i < $scope.markers.length; i++) {
-  	    			
-  	    			ct = parseInt($scope.markers[i].categoria_id);
-  	    			if ($scope.markers[i].categoria_id == ct && s == ct) {
-  	    				nombre= $scope.markers[i];
-  	    				longi = $scope.markers[i].longitud;
-  	    				lati = $scope.markers[i].latitud;
-  	    				pos = new google.maps.LatLng(lati, longi)
-  			          	setMarker(pos,s,nombre);
-  			        }
-  				}
+      	for (var s = 1; s <= 7; s++) {
+      		
+          for (var t = 1; t <= 7; t++) {
+            ve = 'rs' + s + "-" + t;
+            
+            if (document.getElementById("op" + s + "-" + t) != null) {
+              
+              opcion = document.getElementById("op" + s + "-" + t).checked;
+              if (opcion) {
+                
+                for (var i = 0; i < $scope.markers.length; i++) {
+                  
+                  ct = $scope.markers[i].categoria_id;
+                  if (ct ==  s + "-" + t) {
+                    console.log($scope.markers[i]);
+                    nombre= $scope.markers[i];
+                    longi = $scope.markers[i].longitud;
+                    lati = $scope.markers[i].latitud;
+                    pos = new google.maps.LatLng(lati, longi)
+                        setMarker(pos,s,nombre);
+                    }
+              }
+            }
+            
+          }
+      		
   			}
       	}
       	console.log(markersArray);

@@ -1,0 +1,1 @@
+var admin = angular.module('AppAdmin', ['angularUtils.directives.dirPagination']);

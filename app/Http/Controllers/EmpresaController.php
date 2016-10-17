@@ -47,6 +47,7 @@ class EmpresaController extends Controller
         $empresa = new Empresa($request->all());
 
         $empresa->logo = $name;
+        $empresa->fecha = Date('Y-m-d');
         $empresa->save();
         return redirect('/');
     }
@@ -94,6 +95,15 @@ class EmpresaController extends Controller
     {
         //
     }
+    public function getall(){
+        //dd($pais,$ciudad);
+        $not = Empresa::all();
+        $not = DB::table('empresas')
+                ->orderBy('visitas')
+                ->get();
+        return response()->json( $not );
+    }
+
     public function negocios($pais , $ciudad){
         //dd($pais,$ciudad);
         $not = DB::table('empresas')->where([

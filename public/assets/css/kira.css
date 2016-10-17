@@ -174,12 +174,12 @@
   color: black;
 }
 #globo{
-    display: none;
+    display: block;
     position: absolute;
-    width: 200px;
+    width: 400px;
     padding: 15px;
-    top:31.5%;
-    left: 75px;
+    top:65px;
+    left: 260px;
     border-radius: 5px;
     box-shadow: 0 2px 5px #555;
     background-color: #fff;
@@ -247,6 +247,7 @@
   position: absolute;
   border-radius: 5px;
   width: 100%;
+  left: 250px;
   max-width: 50px;
   z-index: 1004;
   padding: 10px;

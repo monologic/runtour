@@ -8,7 +8,7 @@ class Empresa extends Model
 {
     public $timestamps = false;
     
-    protected $fillable = ['nombre', 'empresa','key', 'url', 'descripcion','logo','pais','region','direccion','telefono','correo','categoria_id','longitud','latitud'];
+    protected $fillable = ['nombre', 'empresa','key', 'url', 'descripcion','logo','pais','region','direccion','telefono','correo','categoria_id','longitud','latitud','visitas','fecha'];
 
     public function categoria()
   	{
