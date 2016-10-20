@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Empresa;
 use DB;
 use App\Http\Requests;
 
-class EmpresaController extends Controller
+class PagoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,20 +36,9 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->file('imagen'))
-        {
-            $file = $request -> file('imagen');
-            $name = 'empresa_logo_'. time() . '.' .$file->getClientOriginalExtension();
-            $path=public_path() . "/logos/empresa/";
-            $file -> move($path,$name);
-        }
-        $empresa = new Empresa($request->all());
-
-        $empresa->logo = $name;
-        $empresa->fecha = Date('Y-m-d');
-        $empresa->save();
-        return redirect('/');
+        //
     }
+
     /**
      * Display the specified resource.
      *
@@ -93,49 +81,15 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
-    public function getall(){
-        //dd($pais,$ciudad);
-        $not = Empresa::all();
+    public function mega($pais , $ciudad){
+        //dd($pais . ' '. $ciudad);
         $not = DB::table('empresas')
-                ->orderBy('visitas')
-                ->get();
-        return response()->json( $not );
-    }
-    public function homeRank(){
-        //dd($pais,$ciudad);
-        $not = Empresa::all();
-        $not = Empresa::take(5)
-                ->orderBy('visitas','desc')
-                ->get();
-        return response()->json( $not );
-    }
-
-    public function negocios($pais , $ciudad){
-        //dd($pais,$ciudad);
-        $not = DB::table('empresas')->where([
+            ->select(DB::raw('(SELECT count(*) FROM pagos WHERE empresa_id=empresas.id AND curdate() BETWEEN pagos.fecha_pago AND  pagos.fecha_termino) AS pago, empresas.*'))
+            ->where([
             ['pais', 'like', '%'.$pais.'%'],
             ['region', 'like', '%'.$ciudad.'%'],
         ])->get();
         return response()->json( $not );
-    }
-
-    public function addDataSession(Request $request)
-    {
-        session(['pais' => $request->pais]); //usando el helper
-        session(['region' => $request->region]); //usando el helper
-    }
-    public function getDataSession()
-    {
-        $data = \Session::all(); //usando el Facade
-        return response()->json( $data );
-    }
-    public function visitas(Request $request, $id)
-    {
-        $noticia = Empresa::find($id);
-        //dd($request);
-        $noticia->fill($request->all());
-        $noticia->save();
     }
 }

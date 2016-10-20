@@ -31,6 +31,8 @@ Route::get('allmarker/{pais}/{ciudad}', 'EmpresaController@negocios');
 Route::get('negocios/{pais}/{ciudad}', 'EmpresaController@negocios');
 Route::get('paices', 'paisController@allpaices');
 Route::post('addDataSession', 'EmpresaController@addDataSession');
+Route::put('plus/{id}', 'EmpresaController@visitas');
+Route::get('homeRank', 'EmpresaController@homeRank');
 Route::get('getDataSession', 'EmpresaController@getDataSession');
 
 Route::auth();
@@ -47,7 +49,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'auth', 'web' ]], function()
 	Route::get('/ranking', function () {
 	    return view('gestor.ranking');
 	});
-
+	Route::get('pagoall/{pais}/{ciudad}', 'PagoController@mega');
 	Route::get('/getEmpresa', 'EmpresaController@getall');
 });
 

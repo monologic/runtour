@@ -8,6 +8,32 @@ app.controller('negociosController', function($scope,$http) {
         	alert('no se encontro');
         });
     }
+    $scope.sendSession = function (){
+      paise= $('#selpais').val();
+      regione= $('#selregion').val();
+      $http.post('addDataSession',
+            {   'pais':paise,
+                'region':regione
+            }).then(function successCallback(response) {
+                $scope.dtubicacion();
+                $scope.moverS();
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    }
+    $scope.getRank = function (){
+      $http.get('homeRank').then(function successCallback(response) {
+            $scope.hRanking = response.data;
+        }, function errorCallback(response) {
+          alert('no se encontro');
+        });
+    }
+    $scope.moverS = function (){
+      $('html, body').animate({
+          scrollTop: $("#first").offset().top
+      }, 2000);
+    }
     $scope.openr = function (){
       $('#p-section').addClass('active-r');
     }
@@ -48,9 +74,11 @@ app.controller('negociosController', function($scope,$http) {
          $http.get('getDataSession').then(function successCallback(response) {
                 data = response.data;
                 $scope.dataSess = data;
+                $scope.openDat = $scope.dataSess['region'];
+                console.log($scope.openDat); 
                 $('#selpais').val($scope.dataSess['pais']);
                 $('#selregion').val($scope.dataSess['region']);
-
+                $scope.getRank();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

@@ -1,4 +1,4 @@
-app.controller('paicesController', function($scope,$http) {
+app.controller('paicesController', function($scope,$http,$compile) {
     $scope.dtubicacion = function (){
          $http.get('getDataSession').then(function successCallback(response) {
                 data = response.data;
@@ -10,6 +10,17 @@ app.controller('paicesController', function($scope,$http) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
+    }
+    $scope.plusV = function (id,v){
+      var visit = parseInt(v) + 1;
+      $http.put('plus/' + id,
+            {   'visitas':visit,
+            }).then(function successCallback(response) {
+                
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
     }
     $scope.get = function () {
         $http.get('paices').then(function successCallback(response) {
@@ -210,7 +221,12 @@ app.controller('paicesController', function($scope,$http) {
       	titulo = data.empresa;
       	$( "#cont-img" ).append( "<img src='logos/empresa/"+data.logo+"' width='30' height='30' >" );
       	$( "#cont-title" ).append( "<p>"+ titulo+"</p>" );
-      	$( "#cont-desc" ).append( "<p>"+ data.descripcion+"</p><p><strong>Estamos en : "+data.direccion+"</strong><br><strong>Llamanos : "+data.telefono+"</strong><br><strong>Url : <a>"+data.url+"</a></strong></p>" );
+      	ss = "<p>"+ data.descripcion+"</p><p><strong>Estamos en : "+data.direccion+"</strong><br><strong>Llamanos : "+data.telefono+"</strong><br><strong>Url : <a href='"+data.url+"' target='_blank' ng-click='plusV("+data.id+","+data.visitas+")'>"+data.url+"</a></strong></p>";
+        $scope.ap(ss);
+      }
+      $scope.ap = function (ss){
+        var el = document.getElementById('cont-desc');
+        angular.element(el).append( $compile(ss)($scope) )
       }
       $scope.closeinfo = function(){
       	$( "#cont-title" ).html(" ");

@@ -13,22 +13,24 @@
        
     <nav>
         <ul>
-            <li>Ranking</li>
-            <li>Pagados</li>
-            <li>Recientes</li>
+            <li><a href="{{ url('admin/ranking') }}">Ranking</a></li>
+            <li><a href="{{ url('admin/pago') }}">Pagados</a></li>
+            <li><a href="{{ url('admin/ranking') }}">Recientes</a></li>
         </ul>
     </nav>
         <section style="width:calc(100% - 270px);margin:20px 260px">
             @yield('content')
         </section>
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/jquery.scrolly.min.js')}}"></script>
         <script src="{{asset('assets/select-img/ImageSelect.jquery.js')}}"></script>
         <script src="{{asset('assets/angular/angular.min.js')}}"></script>
         <script src="{{asset('assets/angular/mainAdmin.js')}}"></script>
         <script src="{{asset('assets/angular/controllers/adminRankController.js')}}"></script>
+        <script src="{{asset('assets/angular/controllers/pagoController.js')}}"></script>
+        <script src="{{asset('assets/angular/directives/click/compileData.js')}}"></script>
         <script src="{{asset('assets/angular/directives/pagination/dirPagination.js')}}"></script>
-        <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/skel.min.js')}}"></script>
         <script src="{{asset('assets/js/util.js')}}"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->

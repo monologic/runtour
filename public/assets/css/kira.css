@@ -1,6 +1,23 @@
 @import 'https://fonts.googleapis.com/css?family=Poppins';
 @import 'https://fonts.googleapis.com/css?family=Raleway';
 /*INTRO*/
+.cont-rank{
+  font-size: 12px;
+  max-width: 300px;
+  margin-bottom:20px;
+}
+.cont-rank b{
+  font-size: 15px;
+}
+.cont-principal{
+  width: 90%;
+  margin: 20px auto 20px auto;
+}
+.rank-img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
 .logo-prin{
   margin-top: -15px;
   width: 180px;

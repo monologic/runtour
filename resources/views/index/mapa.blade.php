@@ -83,7 +83,7 @@
       <button type="button" class="close2" data-dismiss="alert" aria-label="Close" ng-click="closeinfo()"><span aria-hidden="true">&times;</span></button>
       <div id="cont-img" class="col-xs-3"></div>
       <div id="cont-title" class="col-xs-9"></div>
-      <div id="cont-desc" class="col-xs-12"></div>
+      <div id="cont-desc" class="col-xs-12" compile-data template></div>
       <a class='btn btn-success rsl' ng-click='enrutando()'> <i class='fa fa-map-signs' aria-hidden='true'></i>  Trazar ruta</a>
     </div>
     <map id="map">
@@ -94,7 +94,6 @@
         </div>
       </map>
   </section>
-    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCACx5jRrZBQGgjU_3QXdo5X7S5jDi0f9E"
     async defer></script>
 @endsection
