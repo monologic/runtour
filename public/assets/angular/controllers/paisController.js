@@ -65,6 +65,8 @@ app.controller('paicesController', function($scope,$http,$compile) {
                 yo = pos;
   		      $scope.map.setCenter(pos);
   		      $scope.geo(pos);
+            $scope.manual();
+            
   		    }, function() {
             $scope.manual();
   		      //handleLocationError(true, infoWindow, map.getCenter());

@@ -34,6 +34,7 @@ Route::post('addDataSession', 'EmpresaController@addDataSession');
 Route::put('plus/{id}', 'EmpresaController@visitas');
 Route::get('homeRank', 'EmpresaController@homeRank');
 Route::get('getDataSession', 'EmpresaController@getDataSession');
+Route::get('pagoall/{pais}/{ciudad}', 'PagoController@mega');
 
 Route::auth();
 

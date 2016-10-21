@@ -35,16 +35,13 @@
                         <div class="content featured">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div ng-repeat="o in nj" ng-if="o.pago == '1'" class="col-md-4">
                                         <section>
                                             <span class="feature-icon"><span class="icon fa-clock-o"></span></span>
                                             <header>
-                                                <h3>Gravida</h3>
+                                                <h3>@{{o.empresa}}</h3>
                                             </header>
-                                            <p>Gravida dis placerat lectus ante vel nunc euismod est turpis sodales.
-                                            Diam tempor dui lacinia accumsan vivamus. Gravida dis placerat lectus
-                                            ante vel nunc euismod est turpis sodales. Diam tempor dui lacinia
-                                            accumsan vivamus.</p>
+                                            <p>@{{o.descripcion}}</p>
                                         </section>
                                     </div>
                                     

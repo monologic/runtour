@@ -22,6 +22,14 @@ app.controller('negociosController', function($scope,$http) {
             // or server returns response with an error status.
         });
     }
+    $scope.getPag = function (pais,region) {
+        $http.get('pagoall/'+ pais + '/' + region).then(function successCallback(response) {
+              $scope.nj = response.data;
+          }, function errorCallback(response) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+        });
+    }
     $scope.getRank = function (){
       $http.get('homeRank').then(function successCallback(response) {
             $scope.hRanking = response.data;
@@ -75,10 +83,10 @@ app.controller('negociosController', function($scope,$http) {
                 data = response.data;
                 $scope.dataSess = data;
                 $scope.openDat = $scope.dataSess['region'];
-                console.log($scope.openDat); 
                 $('#selpais').val($scope.dataSess['pais']);
                 $('#selregion').val($scope.dataSess['region']);
                 $scope.getRank();
+                $scope.getPag($scope.dataSess['pais'],$scope.dataSess['region']);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
